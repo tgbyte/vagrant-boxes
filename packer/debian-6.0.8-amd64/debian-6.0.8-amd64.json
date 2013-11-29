@@ -7,8 +7,10 @@
 				"scripts/vagrant.sh",
 				"scripts/virtualbox.sh",
 				"scripts/ruby.sh",
+				"scripts/puppet.sh",
 				"scripts/chef.sh",
-				"scripts/cleanup.sh"
+				"scripts/cleanup.sh",
+				"scripts/zerodisk.sh"
 			],
 			"override": {
 				"virtualbox": {
@@ -34,21 +36,20 @@
 				"debconf/frontend=noninteractive <wait>",
 				"console-setup/ask_detect=false <wait>",
 				"console-keymaps-at/keymap=us <wait>",
-				"keyboard-configuration/xkb-keymap=us <wait>",
 				"<enter><wait>"
 			],
 			"boot_wait": "10s",
 			"disk_size": 10140,
 			"guest_os_type": "Debian_64",
 			"http_directory": "http",
-			"iso_checksum": "80f498a1f9daa76bc911ae13692e4495",
-			"iso_checksum_type": "md5",
-			"iso_url": "http://cdimage.debian.org/cdimage/release/7.1.0/amd64/iso-cd/debian-7.1.0-amd64-netinst.iso",
+			"iso_checksum": "bbad2dfca6817dd5d366e469e448dcfe52e2bfe5",
+			"iso_checksum_type": "sha1",
+			"iso_url": "http://cdimage.debian.org/cdimage/archive/6.0.8/amd64/iso-cd/debian-6.0.8-amd64-netinst.iso",
 			"ssh_username": "vagrant",
 			"ssh_password": "vagrant",
 			"ssh_port": 22,
 			"ssh_wait_timeout": "10000s",
-			"shutdown_command": "echo 'halt -p' > shutdown.sh; echo 'vagrant'|sudo -S bash 'shutdown.sh'",
+			"shutdown_command": "echo 'halt -p' > shutdown.sh; echo 'vagrant'|sudo -S sh 'shutdown.sh'",
 			"guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
 			"virtualbox_version_file": ".vbox_version",
 			"vboxmanage": [
@@ -70,7 +71,7 @@
 	"post-processors": [
 		{
 			"type": "vagrant",
-			"output": "debian-7.1.0-amd64.box",
+			"output": "debian-6.0.8-amd64.box",
 			"vagrantfile_template": "scripts/Vagrantfile"
 		}
 	]

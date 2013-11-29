@@ -17,9 +17,17 @@ curl https://get.docker.io/gpg | apt-key add -
 
 # Add the Docker repository to your apt sources list.
 echo deb https://get.docker.io/ubuntu docker main > /etc/apt/sources.list.d/docker.list
+# Add saucy-proposed repostory to your apt sources list.
+echo deb http://us.archive.ubuntu.com/ubuntu/ saucy-proposed main > /etc/apt/sources.list.d/proposed.list
 
 # Update your sources
 apt-get update
 
 # Install. Confirm install.
 apt-get install -y lxc-docker
+
+# Remove saucy-proposed.
+rm /etc/apt/sources.list.d/proposed.list
+
+# Update your sources
+apt-get update
